@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Alex Evrard Miyoma – Ingénieur en sécurité réseau</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://kit.fontawesome.com/06fd6339dc.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF1F4; --surface:#F8FAFB; --ink:#12222D; --muted:#4A5C69; --line:#C9D4DC;
+  --accent:#1F4FD8; --accent-ink:#FFFFFF; --alert:#B26A00;
+  --display:"Bricolage Grotesque","Segoe UI",Arial,sans-serif;
+  --body:"Public Sans","Segoe UI",Arial,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F1A22; --surface:#16252F; --ink:#E6EEF3; --muted:#A3B5C1; --line:#2B3E4B;
+    --accent:#86A9FF; --accent-ink:#0F1A22; --alert:#F0B04A; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F1A22; --surface:#16252F; --ink:#E6EEF3; --muted:#A3B5C1; --line:#2B3E4B;
+  --accent:#86A9FF; --accent-ink:#0F1A22; --alert:#F0B04A; color-scheme:dark;
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body)}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:62rem;margin:0 auto;padding:0 1.25rem}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 0;gap:1rem;flex-wrap:wrap}
+header.top strong{font:700 1.15rem var(--display)}
+nav a{margin-left:1.25rem;color:var(--muted);text-decoration:none;font-weight:500}
+nav a:hover{color:var(--ink)}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0}
+h1{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:700;letter-spacing:-.02em;max-width:16ch}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;margin-bottom:1.5rem}
+h3{font-size:1.2rem;font-weight:700;margin-bottom:.5rem}
+.hero{padding:3rem 0 2.5rem}
+.hero p.lead{font-size:1.2rem;max-width:44ch;color:var(--muted);margin:1.5rem 0 2rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap}
+.btn{display:inline-block;padding:.8rem 1.4rem;border-radius:8px;font-weight:600;text-decoration:none;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:var(--accent);background:transparent}
+.pipe{margin-top:3rem;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:2px solid var(--ink);border-radius:10px;overflow:hidden;background:var(--surface)}
+.pipe div{padding:1.1rem 1.25rem;border-right:2px solid var(--ink);position:relative}
+.pipe div:last-child{border-right:0;background:var(--ink);color:var(--bg)}
+.pipe b{display:block;font:700 1.15rem var(--display)}
+.pipe span{font-size:.9rem;color:var(--muted)}
+.pipe div:last-child span{color:var(--line)}
+.pipe div:not(:last-child)::after{content:"";position:absolute;right:-9px;top:50%;width:14px;height:14px;background:var(--surface);border-top:2px solid var(--ink);border-right:2px solid var(--ink);transform:translateY(-50%) rotate(45deg);z-index:2}
+.pipe-cap{font-size:.9rem;color:var(--muted);margin-top:.75rem}
+section{padding:3rem 0;border-top:1px solid var(--line)}
+.projects{display:grid;gap:1.25rem}
+.proj{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:1.5rem}
+.proj.main{border-left:6px solid var(--accent)}
+.proj p{margin:.25rem 0 .75rem;max-width:68ch}
+.meta{font-size:.92rem;color:var(--muted);margin-bottom:.75rem}
+.proj ul{margin:.5rem 0 1rem;padding-left:1.2rem;max-width:68ch}
+.tags{display:flex;flex-wrap:wrap;gap:.4rem;padding:0;margin:0;list-style:none}
+.tags li{font-size:.85rem;font-weight:500;padding:.2rem .65rem;border:1px solid var(--line);border-radius:99px;background:var(--bg)}
+.todo{display:inline-block;margin-top:.25rem;font-size:.9rem;color:var(--alert);font-weight:600}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1.5rem 2rem}
+.skills h3{font-size:1.05rem}
+.skills p{margin:0;color:var(--muted)}
+.certs{columns:2;column-gap:2rem;padding-left:1.2rem;margin:0}
+.certs li{margin-bottom:.4rem;break-inside:avoid}
+.contact p{max-width:52ch;color:var(--muted)}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line)}
+@media (max-width:720px){
+  .pipe{grid-template-columns:1fr}
+  .pipe div{border-right:0;border-bottom:2px solid var(--ink)}
+  .pipe div:last-child{border-bottom:0}
+  .pipe div:not(:last-child)::after{display:none}
+  .certs{columns:1}
+  nav a{margin:0 1rem 0 0}
+}
+@media (prefers-reduced-motion:no-preference){
+  .pipe div{animation:fill .6s ease both}
+  .pipe div:nth-child(2){animation-delay:.15s}
+  .pipe div:nth-child(3){animation-delay:.3s}
+  .pipe div:nth-child(4){animation-delay:.45s}
+  @keyframes fill{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+.shots{display:grid;gap:1rem;margin-top:1rem}
+.shots figure{margin:0;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--bg)}
+.shots img{display:block;width:100%;height:auto;cursor:zoom-in}
+.shots figcaption{padding:.65rem .9rem;font-size:.92rem;color:var(--muted)}
+dialog.zoom{border:0;padding:0;background:transparent;max-width:96vw;max-height:94vh}
+dialog.zoom::backdrop{background:rgba(0,0,0,.8)}
+dialog.zoom img{display:block;max-width:96vw;max-height:94vh;border-radius:6px;cursor:zoom-out}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <strong>Alex Evrard Miyoma</strong>
+    <nav aria-label="Navigation principale">
+      <a href="#projets">Projets</a><a href="#competences">Compétences</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Je mets les réseaux sous surveillance.</h1>
+      <p class="lead">Ingénieur en sécurité réseau, services et application. Je déploie des solutions SIEM open source pour détecter les menaces et rendre les journaux d’un réseau lisibles.</p>
+      <div class="btns">
+        <a class="btn primary" href="#projets">Voir mes projets</a>
+        <a class="btn ghost" href="mailto:evrardmiyoma@gmail.com">Me contacter</a>
+      </div>
+      <div class="pipe" role="img" aria-label="Chaîne de supervision : collecte, centralisation, détection, tableau de bord">
+        <div><b>Collecte</b><span>Agents Wazuh, Fluent Bit</span></div>
+        <div><b>Centralisation</b><span>OpenSearch, ELK</span></div>
+        <div><b>Détection</b><span>Règles et alertes</span></div>
+        <div><b>Supervision</b><span>Tableaux de bord en temps réel</span></div>
+      </div>
+      <p class="pipe-cap">La chaîne que j’ai mise en place en entreprise, de la collecte des logs à la supervision des incidents.</p>
+    </div>
+
+    <section id="projets">
+      <h2>Projets</h2>
+      <div class="projects">
+
+        <article class="proj main">
+          <h3>SIEM open source avec Wazuh</h3>
+          <div class="meta">Projet de fin d’études, Lumière Logistique Transport</div>
+          <p>Surveillance de la sécurité du réseau d’une entreprise de transport, avec collecte et analyse centralisée des journaux.</p>
+          <ul>
+            <li>Déploiement et configuration du SIEM Wazuh et de ses agents sur postes et serveurs.</li>
+            <li>Règles de détection et alertes pour repérer les menaces et les comportements anormaux.</li>
+            <li>Tableaux de bord de suivi des incidents en temps réel.</li>
+            <li>Documentation technique et rapport de PFE.</li>
+          </ul>
+          <ul class="tags"><li>Wazuh</li><li>SIEM</li><li>Détection d’intrusion</li><li>Analyse de logs</li></ul>
+          <div class="shots">
+            <figure><img src="img/dash-wazuh.png" alt="Tableau de bord Wazuh avec évolution des alertes, techniques MITRE ATT&amp;CK et agents" loading="lazy" width="1500"><figcaption>Tableau de bord Wazuh : évolution des alertes par niveau, techniques MITRE ATT&amp;CK détectées et agents les plus actifs.</figcaption></figure>
+            <figure><img src="img/dash-wazuh1.png" alt="Seconde vue du tableau de bord Wazuh avec trois agents" loading="lazy" width="1500"><figcaption>Seconde vue du tableau de bord, avec les alertes de trois agents (Windows, Ubuntu et le serveur Wazuh).</figcaption></figure>
+            <figure><img src="img/agents-logs.png" alt="Liste des agents Wazuh : Windows 11 Pro et Ubuntu 22.04, tous actifs" loading="lazy" width="1500"><figcaption>Agents déployés : un poste Windows 11 Pro et une machine Ubuntu 22.04, tous deux actifs, couverture de 100 %.</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="proj main">
+          <h3>Centralisation des logs avec OpenSearch et Fluent Bit</h3>
+          <div class="meta">Stage, Dotcom</div>
+          <p>Collecte, indexation et recherche des journaux de machines Linux sur un serveur central.</p>
+          <ul>
+            <li>Déploiement d’OpenSearch pour l’indexation des journaux.</li>
+            <li>Installation de Fluent Bit comme agent de collecte et d’acheminement.</li>
+            <li>Exploitation des logs pour analyser et suivre les événements système.</li>
+          </ul>
+          <ul class="tags"><li>OpenSearch</li><li>Fluent Bit</li><li>Linux</li></ul>
+          <div class="shots">
+            <figure><img src="img/architecture-opensearch.drawio.png" alt="Schéma d’architecture : VM Linux, Windows et applications vers Fluent Bit puis OpenSearch" loading="lazy" width="300"><figcaption>Architecture : Fluent Bit collecte les logs des VM Linux, Windows et des applications, ajoute le nom d’hôte et l’OS, puis les envoie en HTTPS à OpenSearch (ingestion, index, analyse, webhook et tableaux de bord).</figcaption></figure>
+            <figure><img src="img/fluent-bit.conf.png" alt="Fichier de configuration Fluent Bit, section SERVICE" loading="lazy" width="1500"><figcaption>Configuration de Fluent Bit : section SERVICE, envoi des enregistrements toutes les 5 secondes.</figcaption></figure>
+            <figure><img src="img/ssh log.png" alt="visualisation des logs ssh" loading="lazy" width="1500"><figcaption>Visualisation des logs SSH dans discover.</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="proj">
+          <h3>Infrastructure réseau sécurisée sur le cloud</h3>
+          <div class="meta">Mini-projet Cloud, 2025 – 2026</div>
+          <p>Réseau virtualisé sur le cloud avec segmentation et sécurisation des ressources.</p>
+          <ul class="tags"><li>VPC</li><li>Segmentation</li><li>Cisco Packet Tracer</li></ul>
+          <div class="shots">
+            <figure><img src="img/topologie-net.png" alt="Architecture VPC avec packet Tracer" loading="lazy" width="1500"><figcaption>Architecture VPC connectivité entre un réseau LAN et un WAN </figcaption></figure>
+            <figure><img src="img/ip-nat-translations.png" alt="visualisation de l'établissement de connection entre le WAN et le LAN" width="1500"><figcaption>visualisation de l'établissement de connection entre le WAN et le LAN</figcaption></figure>
+          </div>
+        </article>
+
+        <article class="proj">
+          <h3>Chaîne CI/CD automatisée</h3>
+          <div class="meta">Mini-projet DevOps, 2025 – 2026</div>
+          <p>Automatisation des phases de build, de test et de déploiement.</p>
+          <ul class="tags"><li>Git</li><li>Docker</li><li>Pipelines CI/CD</li><li>Linux</li></ul>
+        </article>
+
+        <article class="proj">
+          <h3>Système connecté IoT</h3>
+          <div class="meta">Mini-projet Objets intelligents, 2024 – 2025</div>
+          <p>Collecte et transmission de données de capteurs en temps réel.</p>
+          <ul class="tags"><li>Arduino</li><li>Raspberry Pi</li><li>MQTT</li></ul>
+          <div class="shots">
+            <figure><img src="img/shema-connect.png" alt="shema-connect avec Arduino" loading="lazy" width="1500"><figcaption>Shéma de Visualisation</figcaption></figure>
+            <figure><img src="img/arduino-connect.png" alt="shema arduino-connect" loading="lazy" width="1500"><figcaption>Connectivité des objets avec Arduino</figcaption></figure>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="competences">
+      <h2>Compétences</h2>
+      <div class="skills">
+        <div><h3>Sécurité et supervision</h3><p>Wazuh, ELK Stack, OpenSearch, Fluent Bit, détection d’intrusion, analyse de logs.</p></div>
+        <div><h3>Ethical hacking</h3><p>Tests d’intrusion, analyse et scan de vulnérabilités, sécurité IoT, ingénierie sociale, rédaction de rapports.</p></div>
+        <div><h3>Réseaux</h3><p>VLAN, LAN, WAN, VPN, routage, commutation, réseaux sans fil, Cisco Packet Tracer.</p></div>
+        <div><h3>Cloud et DevOps</h3><p>VPC, CI/CD, Docker, Git, Linux.</p></div>
+        <div><h3>Développement</h3><p>Python (bases), Node.js, Spring Boot, HTML, CSS, Java, C#.</p></div>
+        <div><h3>Langues</h3><p>Français : langue maternelle. Anglais : niveau B1.</p></div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <h2>Certifications</h2>
+      <ul class="certs">
+
+        <li><a href="certif/Ethical_Hacker_certificate.pdf">Cisco CCNA : Ethical Hacker</a></li> 
+        <li><a href="certif/CCNA-_Introduction_to_Networks_certificate.pdf">Cisco CCNA : Introduction aux réseaux</a></li>
+        <li><a href="certif/CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate.pdf">Cisco CCNA : Commutation, routage et réseaux sans fil</a></li>
+        <li><a href="certif/introduction cybersecurity essentials.pdf">IBM : Introduction to Cybersecurity Essentials</a></li>
+        <li><a href="certif/introduction cybersecurity carreers.pdf">IBM : Introduction to Cybersecurity carreers</a></li>
+        <li><a href="certif/Partner-_NDG_Linux_Essentials_certificate.pdf">NDG Linux Essentials</a></li>
+        <li><a href="certif/Partner-_PCAP_-_Programming_Essentials_in_Python_certificate.pdf">PCAP : Programmation de base en Python</a></li>
+        <li><a href="certif/linux-io-redirrection.pdf">Linux : I/O Redirection for DevOps</a></li>
+        <li><a href="certif/ScrumforOpsandDevOpsFundamentalsCertified.pdf">Scrum for Operations &amp; DevOps Fundamentals (SODFC)</a></li>
+        <li><a href="certif/ScrumFundamentalsCertified.pdf">Scrum Fundamentals Certified (SFC)</a></li>
+      </ul>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Parlons de votre sécurité</h2>
+      <p>Je suis disponible pour des missions de supervision, de durcissement de serveurs et de configuration réseau, en Tunisie comme à distance. </p>
+      <div class="btns">
+        <a class="btn primary" href="mailto:evrardmiyoma@gmail.com">evrardmiyoma@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <div>
+        <a href="http://www.linkedin.com/in/alex-evrard-m-296918314" width="800px" height="300px"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/alexevrard"  width="800px" height="300px"><i class="fa-brands fa-github"></i></a>
+      </div>
+      <div>
+        Formation : spécialisation en sécurité réseau, IT Business School, 2024 – 2026.
+      </div>
+    </div>
+   
+  </footer>
+</div>
+<dialog class="zoom" id="zoom"><img alt=""></dialog>
+<script>
+(function(){var d=document.getElementById('zoom'),z=d.querySelector('img');
+document.querySelectorAll('.shots img').forEach(function(i){i.addEventListener('click',function(){z.src=i.src;z.alt=i.alt;d.showModal();});});
+d.addEventListener('click',function(){d.close();});})();
+</script>
+</body>
+</html>
